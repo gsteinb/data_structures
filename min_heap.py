@@ -6,7 +6,7 @@ class MinHeap:
         else:
             self.heap = [0] + heap
             i = len(self.heap)
-            self.heap[0] = i # get the size of the heap
+            self.heap[0] = i - 1 # get the size of the heap
             while i > 0:
                 self.heapify(i)
                 i -= 1
@@ -29,9 +29,21 @@ class MinHeap:
         min_value = self.heap[1]
         # decrease heap size
         self.heap[0] -= 1
-        self.heap[1] = self.heap.pop() # get the value from the right-most leaf
-        self.heapify(1) # heapify at index 1
+        if self.heap[0] > 2:
+            self.heap[1] = self.heap.pop() # get the value from the right-most leaf
+            self.heapify(1) # heapify at index 1
+        else:
+            min_value = self.heap.pop()
         return min_value
+   
+    def sort(self):
+        # want to store the original heap we have stored
+        temp_heap = self.heap
+        sorted_heap = []
+        while self.heap[0] > 0:
+            sorted_heap.append(self.extract_min())
+        self.heap = temp_heap
+        return sorted_heap
         
     def heapify(self, i):
         heap_size = self.heap[0]
@@ -63,4 +75,5 @@ if __name__ == "__main__":
     print(a.extract_min())
     print(a)
     b = MinHeap([4,3,5,8])
+    b.sort()
     print(b)
