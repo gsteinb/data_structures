@@ -27,13 +27,13 @@ class MinHeap:
             
     def extract_min(self):
         min_value = self.heap[1]
-        # decrease heap size
-        self.heap[0] -= 1
-        if self.heap[0] > 2:
+        if self.heap[0] > 1:
             self.heap[1] = self.heap.pop() # get the value from the right-most leaf
             self.heapify(1) # heapify at index 1
         else:
             min_value = self.heap.pop()
+        # decrease heap size
+        self.heap[0] -= 1             
         return min_value
    
     def sort(self):
@@ -75,5 +75,6 @@ if __name__ == "__main__":
     print(a.extract_min())
     print(a)
     b = MinHeap([4,3,5,8])
-    b.sort()
+    a = b.sort()
     print(b)
+    print(a)
