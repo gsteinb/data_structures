@@ -30,11 +30,12 @@ class MinHeap:
         min_value = self.heap[1]
         if self.heap[0] > 1:
             self.heap[1] = self.heap.pop() # get the value from the right-most leaf
+            self.heap[0] -= 1
             self.heapify(1) # heapify at index 1
         else:
             min_value = self.heap.pop()
-        # decrease heap size
-        self.heap[0] -= 1             
+            # decrease heap size
+            self.heap[0] -= 1
         return min_value
    
     def sort(self):
@@ -52,9 +53,9 @@ class MinHeap:
         right = 2*i + 1
         min_value = i
         # make sure that left and right are in the limits of the heap array
-        if (left <= heap_size-1 and self.heap[left] < self.heap[i]):
+        if (left <= heap_size and self.heap[left] < self.heap[i]):
             min_value = left
-        if (right <= heap_size-1 and self.heap[right] < self.heap[min_value]):
+        if (right <= heap_size and self.heap[right] < self.heap[min_value]):
             min_value = right
         if (min_value != i):
             temp = self.heap[min_value]
