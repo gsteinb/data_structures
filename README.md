@@ -13,6 +13,10 @@ and several algorithms related to the datastructures
 
 ***********************************************************
 
-- Prims Algorithm
+- Prims implementation
+- Kruskals implementation
+- Some linked list operations
 - Min Heap/ Max Heap
 - BST Height Function
+- Level order traversal
+
